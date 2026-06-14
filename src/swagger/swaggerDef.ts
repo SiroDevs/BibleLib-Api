@@ -9,12 +9,11 @@ export const swaggerOptions: Options = {
       description: `
 The BibleLib backend API. Each bible is stored as its own self-contained
 record made up of four pieces — **info**, **books**, **chapters**, and
-**verses** — mirroring the bible-info.json / bible-books.json /
-bible-chapters.json / bible-verses.json file layout used to seed bibles.
+**verses** — file layout used to seed bibles.
 
-### bibleId
+### BibleId
 You never choose a bibleId yourself. When you create a bible, BibleLib
-generates one for you (in the form \`<16-char-hex>-<NN>\`) based on the
+generates one for you based on the
 name, abbreviation, and language you submit. Use the returned \`id\` for
 every subsequent books/chapters/verses request for that bible.
 
@@ -62,15 +61,14 @@ like the SongLib v2 API.
         },
       },
       schemas: {
-        // ── Core entities ──────────────────────────────────────────────────
         Language: {
           type: 'object',
           required: ['id', 'name'],
           properties: {
-            id:              { type: 'string', example: 'eng', description: 'ISO 639-3 language code' },
-            name:            { type: 'string', example: 'English' },
-            nameLocal:       { type: 'string', example: 'English' },
-            script:          { type: 'string', example: 'Latin' },
+            id: { type: 'string', example: 'eng', description: 'ISO 639-3 language code' },
+            name: { type: 'string', example: 'English' },
+            nameLocal: { type: 'string', example: 'English' },
+            script: { type: 'string', example: 'Latin' },
             scriptDirection: { type: 'string', example: 'LTR', enum: ['LTR', 'RTL'] },
           },
         },
@@ -79,8 +77,8 @@ like the SongLib v2 API.
           type: 'object',
           required: ['id', 'name'],
           properties: {
-            id:        { type: 'string', example: 'US' },
-            name:      { type: 'string', example: 'United States of America' },
+            id: { type: 'string', example: 'US' },
+            name: { type: 'string', example: 'United States of America' },
             nameLocal: { type: 'string', example: 'United States of America' },
           },
         },
@@ -89,24 +87,24 @@ like the SongLib v2 API.
           type: 'object',
           required: ['name', 'abbreviation', 'language'],
           properties: {
-            id:                { type: 'string', example: '78a9f6124f344018-01', description: 'Auto-generated bibleId — read only' },
-            dblId:             { type: 'string', example: '78a9f6124f344018' },
-            relatedDbl:        { type: 'string', nullable: true, example: null },
-            name:              { type: 'string', example: 'New International Version 2011' },
-            nameLocal:         { type: 'string', example: 'New International Version' },
-            abbreviation:      { type: 'string', example: 'NIV11' },
+            id: { type: 'string', example: '78a9f6124f344018-01', description: 'Auto-generated bibleId — read only' },
+            dblId: { type: 'string', example: '78a9f6124f344018' },
+            relatedDbl: { type: 'string', nullable: true, example: null },
+            name: { type: 'string', example: 'New International Version 2011' },
+            nameLocal: { type: 'string', example: 'New International Version' },
+            abbreviation: { type: 'string', example: 'NIV11' },
             abbreviationLocal: { type: 'string', example: 'NIV' },
-            description:       { type: 'string', example: 'Holy Bible' },
-            descriptionLocal:  { type: 'string', example: 'Holy Bible' },
-            language:          { $ref: '#/components/schemas/Language' },
-            countries:         { type: 'array', items: { $ref: '#/components/schemas/Country' } },
-            type:              { type: 'string', example: 'text' },
-            copyright:         { type: 'string', example: 'The Holy Bible, New International Version® NIV®...' },
-            info:              { type: 'string', example: '<h3>About Biblica</h3> <p>...</p>' },
-            audioBibles:       { type: 'array', items: {} },
-            created:           { type: 'string', format: 'date-time' },
-            updated:           { type: 'string', format: 'date-time' },
-            updatedAt:         { type: 'string', format: 'date-time' },
+            description: { type: 'string', example: 'Holy Bible' },
+            descriptionLocal: { type: 'string', example: 'Holy Bible' },
+            language: { $ref: '#/components/schemas/Language' },
+            countries: { type: 'array', items: { $ref: '#/components/schemas/Country' } },
+            type: { type: 'string', example: 'text' },
+            copyright: { type: 'string', example: 'The Holy Bible, New International Version® NIV®...' },
+            info: { type: 'string', example: '<h3>About Biblica</h3> <p>...</p>' },
+            audioBibles: { type: 'array', items: {} },
+            created: { type: 'string', format: 'date-time' },
+            updated: { type: 'string', format: 'date-time' },
+            updatedAt: { type: 'string', format: 'date-time' },
           },
         },
 
@@ -114,13 +112,13 @@ like the SongLib v2 API.
           type: 'object',
           required: ['id', 'name'],
           properties: {
-            id:           { type: 'string', example: 'GEN', description: 'Canonical book code' },
-            bibleId:      { type: 'string', example: '78a9f6124f344018-01', description: 'Auto-injected from the URL — read only' },
+            id: { type: 'string', example: 'GEN', description: 'Canonical book code' },
+            bibleId: { type: 'string', example: '78a9f6124f344018-01', description: 'Auto-injected from the URL — read only' },
             abbreviation: { type: 'string', example: 'Ge' },
-            name:         { type: 'string', example: 'Gen.' },
-            nameLong:     { type: 'string', example: 'Genesis' },
-            created:      { type: 'string', format: 'date-time' },
-            updated:      { type: 'string', format: 'date-time' },
+            name: { type: 'string', example: 'Gen.' },
+            nameLong: { type: 'string', example: 'Genesis' },
+            created: { type: 'string', format: 'date-time' },
+            updated: { type: 'string', format: 'date-time' },
           },
         },
 
@@ -128,13 +126,13 @@ like the SongLib v2 API.
           type: 'object',
           required: ['id', 'bookId', 'number'],
           properties: {
-            id:        { type: 'string', example: 'GEN.1' },
-            bibleId:   { type: 'string', example: '78a9f6124f344018-01', description: 'Auto-injected from the URL — read only' },
-            bookId:    { type: 'string', example: 'GEN' },
-            number:    { type: 'string', example: '1' },
+            id: { type: 'string', example: 'GEN.1' },
+            bibleId: { type: 'string', example: '78a9f6124f344018-01', description: 'Auto-injected from the URL — read only' },
+            bookId: { type: 'string', example: 'GEN' },
+            number: { type: 'string', example: '1' },
             reference: { type: 'string', example: 'Gen. 1' },
-            created:   { type: 'string', format: 'date-time' },
-            updated:   { type: 'string', format: 'date-time' },
+            created: { type: 'string', format: 'date-time' },
+            updated: { type: 'string', format: 'date-time' },
           },
         },
 
@@ -142,14 +140,14 @@ like the SongLib v2 API.
           type: 'object',
           required: ['id', 'bookId', 'number'],
           properties: {
-            id:         { type: 'string', example: 'GEN.1', description: 'Chapter id this verse content belongs to' },
-            bibleId:    { type: 'string', example: '78a9f6124f344018-01', description: 'Auto-injected from the URL — read only' },
-            bookId:     { type: 'string', example: 'GEN' },
-            number:     { type: 'string', example: '1' },
-            reference:  { type: 'string', example: 'Gen. 1' },
-            copyright:  { type: 'string', example: 'The Holy Bible, New International Version® NIV®...' },
+            id: { type: 'string', example: 'GEN.1', description: 'Chapter id this verse content belongs to' },
+            bibleId: { type: 'string', example: '78a9f6124f344018-01', description: 'Auto-injected from the URL — read only' },
+            bookId: { type: 'string', example: 'GEN' },
+            number: { type: 'string', example: '1' },
+            reference: { type: 'string', example: 'Gen. 1' },
+            copyright: { type: 'string', example: 'The Holy Bible, New International Version® NIV®...' },
             verseCount: { type: 'integer', example: 31 },
-            content:    {
+            content: {
               type: 'array',
               description: 'USX-like content tree (paragraphs, verse markers, and text items)',
               items: { type: 'object' },
@@ -163,36 +161,34 @@ like the SongLib v2 API.
           type: 'object',
           description: 'Full bible bundle shaped exactly like the four bible-*.json source files.',
           properties: {
-            'bible-info':     { type: 'object', properties: { data: { $ref: '#/components/schemas/Bible' } } },
-            'bible-books':    { type: 'object', properties: { data: { type: 'array', items: { $ref: '#/components/schemas/Book' } } } },
+            'bible-info': { type: 'object', properties: { data: { $ref: '#/components/schemas/Bible' } } },
+            'bible-books': { type: 'object', properties: { data: { type: 'array', items: { $ref: '#/components/schemas/Book' } } } },
             'bible-chapters': { type: 'object', additionalProperties: { type: 'array', items: { $ref: '#/components/schemas/Chapter' } }, example: { GEN: [{ id: 'GEN.1', bookId: 'GEN', number: '1', reference: 'Gen. 1' }] } },
-            'bible-verses':   { type: 'object', additionalProperties: { type: 'object', additionalProperties: { $ref: '#/components/schemas/Verse' } }, example: { GEN: { 'GEN.1': { id: 'GEN.1', bookId: 'GEN', number: '1' } } } },
+            'bible-verses': { type: 'object', additionalProperties: { type: 'object', additionalProperties: { $ref: '#/components/schemas/Verse' } }, example: { GEN: { 'GEN.1': { id: 'GEN.1', bookId: 'GEN', number: '1' } } } },
           },
         },
 
-        // ── Utility schemas ────────────────────────────────────────────────
         ErrorResponse: {
           type: 'object',
           properties: {
-            status:  { type: 'integer', example: 400 },
-            error:   { type: 'string',  example: 'name is required' },
-            details: { type: 'string',  example: 'Additional context if available' },
+            status: { type: 'integer', example: 400 },
+            error: { type: 'string', example: 'name is required' },
+            details: { type: 'string', example: 'Additional context if available' },
           },
         },
 
         BulkResult: {
           type: 'object',
           properties: {
-            status:  { type: 'integer', example: 201 },
-            message: { type: 'string',  example: '50 books processed successfully' },
-            count:   { type: 'integer', example: 50 },
-            results: { type: 'array',   items: {} },
-            errors:  { type: 'array',   items: {}, description: 'Only present when some items failed' },
+            status: { type: 'integer', example: 201 },
+            message: { type: 'string', example: '50 books processed successfully' },
+            count: { type: 'integer', example: 50 },
+            results: { type: 'array', items: {} },
+            errors: { type: 'array', items: {}, description: 'Only present when some items failed' },
           },
         },
       },
 
-      // ── Reusable responses ──────────────────────────────────────────────
       responses: {
         Unauthorized: {
           description: 'Missing or invalid API key',
@@ -222,15 +218,14 @@ like the SongLib v2 API.
     },
 
     tags: [
-      { name: 'Health',   description: 'Server and database status' },
-      { name: 'Bibles',   description: 'Bible info — create, fetch, update, delete, export' },
-      { name: 'Books',    description: 'Books belonging to a bible' },
+      { name: 'Health', description: 'Server and database status' },
+      { name: 'Bibles', description: 'Bible info — create, fetch, update, delete, export' },
+      { name: 'Books', description: 'Books belonging to a bible' },
       { name: 'Chapters', description: 'Chapters belonging to a book' },
-      { name: 'Verses',   description: 'Verse content (USX-like tree) for a chapter' },
+      { name: 'Verses', description: 'Verse content (USX-like tree) for a chapter' },
     ],
 
     paths: {
-      // ── Health ──────────────────────────────────────────────────────────
       '/health': {
         get: {
           tags: ['Health'],
@@ -244,12 +239,12 @@ like the SongLib v2 API.
                   schema: {
                     type: 'object',
                     properties: {
-                      status:    { type: 'integer', example: 200 },
-                      api:       { type: 'string',  example: 'v1' },
-                      server:    { type: 'string',  example: 'ok' },
-                      database:  { type: 'string',  example: 'connected', enum: ['connected', 'disconnected', 'connecting', 'disconnecting'] },
-                      timestamp: { type: 'string',  format: 'date-time' },
-                      uptime:    { type: 'integer', example: 3600, description: 'Server uptime in seconds' },
+                      status: { type: 'integer', example: 200 },
+                      api: { type: 'string', example: 'v1' },
+                      server: { type: 'string', example: 'ok' },
+                      database: { type: 'string', example: 'connected', enum: ['connected', 'disconnected', 'connecting', 'disconnecting'] },
+                      timestamp: { type: 'string', format: 'date-time' },
+                      uptime: { type: 'integer', example: 3600, description: 'Server uptime in seconds' },
                     },
                   },
                 },
@@ -260,7 +255,6 @@ like the SongLib v2 API.
         },
       },
 
-      // ── Bibles ───────────────────────────────────────────────────────────
       '/bibles': {
         get: {
           tags: ['Bibles'],
@@ -385,7 +379,6 @@ like the SongLib v2 API.
         },
       },
 
-      // ── Books ────────────────────────────────────────────────────────────
       '/books/{bibleId}': {
         get: {
           tags: ['Books'],
@@ -495,7 +488,6 @@ like the SongLib v2 API.
         },
       },
 
-      // ── Chapters ─────────────────────────────────────────────────────────
       '/chapters/{bibleId}/{bookId}': {
         get: {
           tags: ['Chapters'],
@@ -613,7 +605,6 @@ like the SongLib v2 API.
         },
       },
 
-      // ── Verses ───────────────────────────────────────────────────────────
       '/verses/{bibleId}/{bookId}': {
         get: {
           tags: ['Verses'],
@@ -673,10 +664,12 @@ like the SongLib v2 API.
                       reference: 'Gen. 1',
                       verseCount: 2,
                       content: [
-                        { name: 'para', type: 'tag', attrs: { style: 'p' }, items: [
-                          { name: 'verse', type: 'tag', attrs: { number: '1', style: 'v', sid: 'GEN 1:1' }, items: [{ text: '1', type: 'text' }] },
-                          { text: 'In the beginning God created the heavens and the earth.', type: 'text', attrs: { verseId: 'GEN.1.1', verseOrgIds: ['GEN.1.1'] } },
-                        ] },
+                        {
+                          name: 'para', type: 'tag', attrs: { style: 'p' }, items: [
+                            { name: 'verse', type: 'tag', attrs: { number: '1', style: 'v', sid: 'GEN 1:1' }, items: [{ text: '1', type: 'text' }] },
+                            { text: 'In the beginning God created the heavens and the earth.', type: 'text', attrs: { verseId: 'GEN.1.1', verseOrgIds: ['GEN.1.1'] } },
+                          ]
+                        },
                       ],
                     },
                   },

@@ -5,22 +5,6 @@ architecture as the SongLib v2 API (Express + Mongoose, API-key-protected
 writes, rate limiting, bulk create/update, and Swagger docs), adapted for
 bible content.
 
-Each bible is its own self-contained record made of four pieces — **info**,
-**books**, **chapters**, and **verses** — mirroring the
-`bible-info.json` / `bible-books.json` / `bible-chapters.json` /
-`bible-verses.json` files used to seed a bible (see `minimal.zip`).
-
-## How bibleIds work
-
-You never pick a `bibleId` yourself. When you `POST /api/v1/bibles`,
-BibleLib generates one for you in the form `<16-char-hex>-<NN>`
-(e.g. `78a9f6124f344018-01`) derived from the `name`, `abbreviation`, and
-`language.id` you submit. Use the returned `id` for every subsequent
-books/chapters/verses request for that bible.
-
-Everything else — book ids (`GEN`, `EXO`, ...), chapter ids (`GEN.1`, ...),
-verse/content shape, etc. — is exactly the same as in the source files.
-
 ## Setup
 
 ```bash

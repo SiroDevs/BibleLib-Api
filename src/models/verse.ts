@@ -50,7 +50,7 @@ const verseSchema = new Schema<IVerse>({
     min: [0, 'verseCount cannot be negative'],
   },
   content: {
-    type: [Schema.Types.Mixed],
+    type: [Schema.Types.Mixed] as any,
     default: [],
   },
   created: {
