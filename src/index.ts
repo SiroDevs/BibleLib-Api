@@ -27,27 +27,22 @@ app.use(
   })
 );
 
-// ── DB ────────────────────────────────────────────────────────────────────────
 mongoose
   .connect(process.env.ATLAS_URI as string, { authSource: 'admin' })
   .then(() => console.log('MongoDB connected ...'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-// Verse content can include the full USX-like tree for a chapter, so allow
-// generously sized bulk-import payloads.
 app.use(express.json({ limit: '50mb' }));
 
-// ── docs ─────────────────────────────────────────────────────────────────────
-app.use('/api/v1/docs', swaggerRouter);
+app.use('/', swaggerRouter);
 
-// ── v1 routes ────────────────────────────────────────────────────────────────
 app.use('/api/v1/health',   health);
 app.use('/api/v1/bibles',   bibles);
 app.use('/api/v1/books',    books);
 app.use('/api/v1/chapters', chapters);
 app.use('/api/v1/verses',   verses);
 
-app.get('/', (_req: Request, res: Response) => {
+app.get('/api', (_req: Request, res: Response) => {
   res.json({
     name: 'BibleLib API',
     version: '1.0.0',

@@ -9,13 +9,7 @@ export const swaggerOptions: Options = {
       description: `
 The BibleLib backend API. Each bible is stored as its own self-contained
 record made up of four pieces — **info**, **books**, **chapters**, and
-**verses** — file layout used to seed bibles.
-
-### BibleId
-You never choose a bibleId yourself. When you create a bible, BibleLib
-generates one for you based on the
-name, abbreviation, and language you submit. Use the returned \`id\` for
-every subsequent books/chapters/verses request for that bible.
+**verses**.
 
 ### Authentication
 Write operations (POST, PUT, DELETE) require an API key in the request header:
